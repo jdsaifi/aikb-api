@@ -47,7 +47,7 @@ app.get('/healthcheck', (req, res) => {
 
 app.get('/', (req, res) => {
     console.log('Received a request at /');
-    res.send('Welcome to the Law Interview API!');
+    res.send('Welcome to the AI Based Knowledge Platform API!');
 });
 
 // Register routes
