@@ -1,0 +1,492 @@
+[
+    {
+        "id": "doc1",
+        "title": "Engineering Best Practices for Code Reviews",
+        "content": "Code reviews help maintain software quality by ensuring consistency, detecting bugs early, and sharing knowledge among engineers. Recommended practices include setting clear objectives, using checklists, and encouraging constructive feedback.",
+        "tags": ["Engineering"],
+        "userGroups": ["Developers", "Team Leads"]
+    },
+    {
+        "id": "doc2",
+        "title": "Operations Checklist for Incident Management",
+        "content": "Incident management requires a structured approach. The process includes detection, logging, categorization, prioritization, investigation, resolution, and closure. Clear communication channels should always be maintained.",
+        "tags": ["Operations"],
+        "userGroups": ["Ops Team"]
+    },
+    {
+        "id": "doc3",
+        "title": "R&D Report: AI-driven Automation",
+        "content": "The R&D department is experimenting with AI-driven automation to improve manufacturing efficiency. Initial results show a 15% improvement in throughput.",
+        "tags": ["R&D", "Engineering"],
+        "userGroups": ["Researchers", "Engineers"]
+    },
+    {
+        "id": "doc4",
+        "title": "Product Roadmap Q1 2025",
+        "content": "The Q1 roadmap includes launching the new mobile app feature, enhancing the analytics dashboard, and expanding into North America.",
+        "tags": ["Product", "USA", "Canada"],
+        "userGroups": ["Product Managers"]
+    },
+    {
+        "id": "doc5",
+        "title": "Design Guidelines for Mobile Apps",
+        "content": "Designing mobile apps requires following UI/UX principles such as consistency, accessibility, and responsiveness. User feedback loops are critical.",
+        "tags": ["Design"],
+        "userGroups": ["Designers", "Product"]
+    },
+    {
+        "id": "doc6",
+        "title": "Engineering Knowledge Base Setup",
+        "content": "A centralized engineering knowledge base helps teams quickly find technical documentation, architecture diagrams, and coding standards.",
+        "tags": ["Engineering"],
+        "userGroups": ["Developers"]
+    },
+    {
+        "id": "doc7",
+        "title": "Operational Metrics for Cloud Systems",
+        "content": "Key operational metrics include uptime percentage, mean time to recovery (MTTR), and request latency. Monitoring tools like Prometheus are recommended.",
+        "tags": ["Operations"],
+        "userGroups": ["Ops Team", "Cloud Engineers"]
+    },
+    {
+        "id": "doc8",
+        "title": "R&D Proposal: Quantum Computing",
+        "content": "The R&D team is drafting a proposal to explore quantum computing applications in cryptography and drug discovery.",
+        "tags": ["R&D"],
+        "userGroups": ["Researchers"]
+    },
+    {
+        "id": "doc9",
+        "title": "Product Launch Checklist",
+        "content": "A successful product launch involves marketing alignment, engineering readiness, QA sign-off, and customer support training.",
+        "tags": ["Product", "Design"],
+        "userGroups": ["Product Managers", "Designers"]
+    },
+    {
+        "id": "doc10",
+        "title": "Design Sprint Process",
+        "content": "A design sprint is a five-day process to solve product challenges through prototyping and user testing.",
+        "tags": ["Design", "Product"],
+        "userGroups": ["Designers", "Product Managers"]
+    },
+    {
+        "id": "doc11",
+        "title": "Engineering Architecture: Microservices",
+        "content": "Microservices architecture promotes scalability and modularity. Each service should be independently deployable with well-defined APIs.",
+        "tags": ["Engineering"],
+        "userGroups": ["Developers", "Team Leads"]
+    },
+    {
+        "id": "doc12",
+        "title": "Operations Playbook for Cloud Outages",
+        "content": "During cloud outages, follow escalation policies, provide frequent status updates, and run post-mortems to prevent recurrence.",
+        "tags": ["Operations"],
+        "userGroups": ["Ops Team"]
+    },
+    {
+        "id": "doc13",
+        "title": "R&D Experiment: Renewable Energy Storage",
+        "content": "The experiment focuses on developing cost-effective storage solutions for renewable energy using advanced battery materials.",
+        "tags": ["R&D"],
+        "userGroups": ["Researchers", "Engineers"]
+    },
+    {
+        "id": "doc14",
+        "title": "Product Market Expansion Strategy",
+        "content": "Expanding into Canada and the USA requires compliance checks, marketing localization, and distribution partnerships.",
+        "tags": ["Product", "USA", "Canada"],
+        "userGroups": ["Product Managers"]
+    },
+    {
+        "id": "doc15",
+        "title": "Design Accessibility Standards",
+        "content": "Accessibility ensures products are usable by people with disabilities. WCAG 2.1 guidelines recommend sufficient color contrast and keyboard navigation.",
+        "tags": ["Design"],
+        "userGroups": ["Designers"]
+    },
+    {
+        "id": "doc16",
+        "title": "Engineering Guide: API Versioning",
+        "content": "API versioning strategies include URI versioning, query parameters, and headers. Backward compatibility is critical.",
+        "tags": ["Engineering"],
+        "userGroups": ["Developers"]
+    },
+    {
+        "id": "doc17",
+        "title": "Operations Compliance Checklist",
+        "content": "Operations must comply with data privacy laws such as GDPR. Regular audits and employee training are mandatory.",
+        "tags": ["Operations", "UK", "Germany", "India"],
+        "userGroups": ["Ops Team"]
+    },
+    {
+        "id": "doc18",
+        "title": "R&D Collaboration with Universities",
+        "content": "Partnerships with universities in Germany and the UK are helping accelerate research in AI ethics.",
+        "tags": ["R&D", "UK", "Germany"],
+        "userGroups": ["Researchers"]
+    },
+    {
+        "id": "doc19",
+        "title": "Product Feedback Collection",
+        "content": "Effective feedback collection involves surveys, customer interviews, and product analytics tools.",
+        "tags": ["Product", "India"],
+        "userGroups": ["Product Managers"]
+    },
+    {
+        "id": "doc20",
+        "title": "Designing for Global Users",
+        "content": "Designing for global users requires localization, cultural sensitivity, and regional compliance checks.",
+        "tags": ["Design", "UK", "Germany", "India"],
+        "userGroups": ["Designers"]
+    },
+    {
+        "id": "doc21",
+        "title": "Engineering Onboarding Guide",
+        "content": "New engineers should review the company coding standards, set up local development environments, and complete the onboarding project within two weeks.",
+        "tags": ["Engineering"],
+        "userGroups": ["Developers"]
+    },
+    {
+        "id": "doc22",
+        "title": "Operations Dashboard Setup",
+        "content": "The operations team must configure dashboards for uptime, CPU usage, memory consumption, and network traffic monitoring.",
+        "tags": ["Operations"],
+        "userGroups": ["Ops Team", "Cloud Engineers"]
+    },
+    {
+        "id": "doc23",
+        "title": "R&D Progress on Robotics",
+        "content": "The robotics project aims to build automated systems for warehouse logistics. Current prototypes reduce human intervention by 40%.",
+        "tags": ["R&D", "Engineering"],
+        "userGroups": ["Researchers", "Engineers"]
+    },
+    {
+        "id": "doc24",
+        "title": "Product Feature Prioritization Framework",
+        "content": "Features should be prioritized using the RICE model: Reach, Impact, Confidence, and Effort.",
+        "tags": ["Product"],
+        "userGroups": ["Product Managers"]
+    },
+    {
+        "id": "doc25",
+        "title": "Designing for Dark Mode",
+        "content": "Dark mode reduces eye strain and saves battery life. Designers must ensure sufficient contrast for readability.",
+        "tags": ["Design"],
+        "userGroups": ["Designers"]
+    },
+    {
+        "id": "doc26",
+        "title": "Engineering DevOps Practices",
+        "content": "Adopt CI/CD pipelines, automated testing, and infrastructure as code to streamline software delivery.",
+        "tags": ["Engineering", "Operations"],
+        "userGroups": ["Developers", "Ops Team"]
+    },
+    {
+        "id": "doc27",
+        "title": "Operations Escalation Matrix",
+        "content": "Critical incidents must follow the escalation policy: Level 1 support, Level 2 on-call engineers, and Level 3 senior management.",
+        "tags": ["Operations"],
+        "userGroups": ["Ops Team"]
+    },
+    {
+        "id": "doc28",
+        "title": "R&D in Biotechnology",
+        "content": "Research into synthetic biology shows promising results for drug development and agricultural applications.",
+        "tags": ["R&D"],
+        "userGroups": ["Researchers"]
+    },
+    {
+        "id": "doc29",
+        "title": "Product Localization Strategy",
+        "content": "To succeed in Germany and India, products must support multilingual UI and comply with regional laws.",
+        "tags": ["Product", "Germany", "India"],
+        "userGroups": ["Product Managers"]
+    },
+    {
+        "id": "doc30",
+        "title": "Design Systems at Scale",
+        "content": "A design system ensures consistency by defining components, typography, and color palettes for all platforms.",
+        "tags": ["Design"],
+        "userGroups": ["Designers", "Product"]
+    },
+    {
+        "id": "doc31",
+        "title": "Engineering Code Deployment Guide",
+        "content": "Deployments must be automated using CI/CD. Rollbacks should be tested and documented.",
+        "tags": ["Engineering"],
+        "userGroups": ["Developers"]
+    },
+    {
+        "id": "doc32",
+        "title": "Operations Logging Standards",
+        "content": "Logs should be structured, timestamped, and centralized. Tools like ELK stack are recommended.",
+        "tags": ["Operations"],
+        "userGroups": ["Ops Team"]
+    },
+    {
+        "id": "doc33",
+        "title": "R&D Report on Nanotechnology",
+        "content": "Nanotechnology has applications in healthcare, renewable energy, and materials science.",
+        "tags": ["R&D"],
+        "userGroups": ["Researchers"]
+    },
+    {
+        "id": "doc34",
+        "title": "Product Analytics Best Practices",
+        "content": "Use funnel analysis, retention metrics, and cohort studies to track product performance.",
+        "tags": ["Product"],
+        "userGroups": ["Product Managers", "Designers"]
+    },
+    {
+        "id": "doc35",
+        "title": "Design Collaboration with Developers",
+        "content": "Designers and developers must share a single source of truth using tools like Figma and Storybook.",
+        "tags": ["Design", "Engineering"],
+        "userGroups": ["Designers", "Developers"]
+    },
+    {
+        "id": "doc36",
+        "title": "Engineering API Security Checklist",
+        "content": "APIs must use HTTPS, authentication, rate limiting, and input validation to prevent attacks.",
+        "tags": ["Engineering"],
+        "userGroups": ["Developers", "Team Leads"]
+    },
+    {
+        "id": "doc37",
+        "title": "Operations Disaster Recovery Plan",
+        "content": "Backups must be tested weekly. Recovery time objective (RTO) is 4 hours, and recovery point objective (RPO) is 15 minutes.",
+        "tags": ["Operations"],
+        "userGroups": ["Ops Team", "Cloud Engineers"]
+    },
+    {
+        "id": "doc38",
+        "title": "R&D Trends in Renewable Energy",
+        "content": "Research in solar panels and wind energy storage continues to improve efficiency and reduce costs.",
+        "tags": ["R&D"],
+        "userGroups": ["Researchers", "Engineers"]
+    },
+    {
+        "id": "doc39",
+        "title": "Product Requirements Document Template",
+        "content": "A PRD should include problem statements, goals, features, user flows, and acceptance criteria.",
+        "tags": ["Product"],
+        "userGroups": ["Product Managers"]
+    },
+    {
+        "id": "doc40",
+        "title": "Design Workshop Facilitation Guide",
+        "content": "Effective workshops require clear objectives, timed activities, and active participation.",
+        "tags": ["Design"],
+        "userGroups": ["Designers", "Product Managers"]
+    },
+    {
+        "id": "doc41",
+        "title": "Engineering Testing Strategies",
+        "content": "Use unit tests, integration tests, and end-to-end tests. Automate them in CI/CD pipelines.",
+        "tags": ["Engineering"],
+        "userGroups": ["Developers"]
+    },
+    {
+        "id": "doc42",
+        "title": "Operations SLA Guidelines",
+        "content": "Service level agreements must define uptime, response times, and penalties for breaches.",
+        "tags": ["Operations"],
+        "userGroups": ["Ops Team"]
+    },
+    {
+        "id": "doc43",
+        "title": "R&D Collaboration in AI Research",
+        "content": "Partnerships with universities in the USA are advancing ethical AI development.",
+        "tags": ["R&D", "USA"],
+        "userGroups": ["Researchers"]
+    },
+    {
+        "id": "doc44",
+        "title": "Product Customer Segmentation",
+        "content": "Segment customers by demographics, behavior, and needs to design better solutions.",
+        "tags": ["Product", "Canada"],
+        "userGroups": ["Product Managers"]
+    },
+    {
+        "id": "doc45",
+        "title": "Designing Wireframes Effectively",
+        "content": "Wireframes should focus on layout and structure before visual details.",
+        "tags": ["Design"],
+        "userGroups": ["Designers"]
+    },
+    {
+        "id": "doc46",
+        "title": "Engineering Cloud Architecture",
+        "content": "Cloud systems should follow principles of elasticity, fault tolerance, and cost optimization.",
+        "tags": ["Engineering", "Operations"],
+        "userGroups": ["Developers", "Ops Team"]
+    },
+    {
+        "id": "doc47",
+        "title": "Operations Network Security Policy",
+        "content": "Firewall rules, intrusion detection systems, and VPN access are mandatory for secure operations.",
+        "tags": ["Operations"],
+        "userGroups": ["Ops Team", "Security"]
+    },
+    {
+        "id": "doc48",
+        "title": "R&D Advances in Materials Science",
+        "content": "New composites are being developed to increase strength while reducing weight.",
+        "tags": ["R&D"],
+        "userGroups": ["Researchers", "Engineers"]
+    },
+    {
+        "id": "doc49",
+        "title": "Product Pricing Strategies",
+        "content": "Pricing can be cost-plus, value-based, or competitive, depending on market positioning.",
+        "tags": ["Product"],
+        "userGroups": ["Product Managers"]
+    },
+    {
+        "id": "doc50",
+        "title": "Designing Dashboards for Analytics",
+        "content": "Dashboards should highlight key metrics, be easy to scan, and provide drill-down options.",
+        "tags": ["Design", "Product"],
+        "userGroups": ["Designers", "Product Managers"]
+    },
+    {
+        "id": "doc51",
+        "title": "Engineering Load Testing Guide",
+        "content": "Load testing ensures systems can handle peak traffic without performance degradation.",
+        "tags": ["Engineering"],
+        "userGroups": ["Developers"]
+    },
+    {
+        "id": "doc52",
+        "title": "Operations Change Management Policy",
+        "content": "All changes must be reviewed, documented, and approved before deployment.",
+        "tags": ["Operations"],
+        "userGroups": ["Ops Team"]
+    },
+    {
+        "id": "doc53",
+        "title": "R&D Whitepaper on AI in Healthcare",
+        "content": "AI applications in diagnostics and drug discovery are showing promising outcomes.",
+        "tags": ["R&D", "Healthcare"],
+        "userGroups": ["Researchers"]
+    },
+    {
+        "id": "doc54",
+        "title": "Product Lifecycle Stages",
+        "content": "The lifecycle includes introduction, growth, maturity, and decline. Each stage needs different strategies.",
+        "tags": ["Product"],
+        "userGroups": ["Product Managers"]
+    },
+    {
+        "id": "doc55",
+        "title": "Designing Cross-Platform Apps",
+        "content": "Cross-platform design requires adaptive layouts and consistent branding.",
+        "tags": ["Design"],
+        "userGroups": ["Designers"]
+    },
+    {
+        "id": "doc56",
+        "title": "Engineering Guidelines for Open Source",
+        "content": "Use approved licenses, document contributions, and follow company policies before releasing open-source software.",
+        "tags": ["Engineering"],
+        "userGroups": ["Developers"]
+    },
+    {
+        "id": "doc57",
+        "title": "Operations Data Backup Policy",
+        "content": "Daily incremental and weekly full backups must be automated and tested monthly.",
+        "tags": ["Operations"],
+        "userGroups": ["Ops Team"]
+    },
+    {
+        "id": "doc58",
+        "title": "R&D Exploration of VR in Training",
+        "content": "Virtual reality is being tested as a training tool for manufacturing and healthcare staff.",
+        "tags": ["R&D", "Training"],
+        "userGroups": ["Researchers"]
+    },
+    {
+        "id": "doc59",
+        "title": "Product Feature Adoption Metrics",
+        "content": "Track feature adoption with activation rate, engagement rate, and churn impact.",
+        "tags": ["Product"],
+        "userGroups": ["Product Managers"]
+    },
+    {
+        "id": "doc60",
+        "title": "Design Usability Testing Checklist",
+        "content": "Usability tests should include diverse participants, real tasks, and clear success criteria.",
+        "tags": ["Design"],
+        "userGroups": ["Designers", "Product Managers"]
+    },
+    {
+        "id": "doc61",
+        "title": "Engineering Guide: Refactoring Legacy Code",
+        "content": "Refactor in small steps, add tests first, and document changes clearly.",
+        "tags": ["Engineering"],
+        "userGroups": ["Developers"]
+    },
+    {
+        "id": "doc62",
+        "title": "Operations Patch Management Process",
+        "content": "Security patches must be applied within 7 days of release to minimize risks.",
+        "tags": ["Operations"],
+        "userGroups": ["Ops Team", "Security"]
+    },
+    {
+        "id": "doc63",
+        "title": "R&D Report on Smart Cities",
+        "content": "IoT devices are being tested for smart traffic management and energy efficiency in cities.",
+        "tags": ["R&D"],
+        "userGroups": ["Researchers", "Engineers"]
+    },
+    {
+        "id": "doc64",
+        "title": "Product Roadmap for India Expansion",
+        "content": "The India strategy includes localized marketing campaigns and regional partnerships.",
+        "tags": ["Product", "India"],
+        "userGroups": ["Product Managers"]
+    },
+    {
+        "id": "doc65",
+        "title": "Design Brand Identity Guidelines",
+        "content": "Brand guidelines define logos, colors, and typography for consistent representation.",
+        "tags": ["Design"],
+        "userGroups": ["Designers"]
+    },
+    {
+        "id": "doc66",
+        "title": "Engineering Secure Coding Standards",
+        "content": "Avoid hardcoded secrets, validate inputs, and handle errors securely.",
+        "tags": ["Engineering"],
+        "userGroups": ["Developers"]
+    },
+    {
+        "id": "doc67",
+        "title": "Operations Cost Optimization Playbook",
+        "content": "Review cloud usage monthly, shut down idle resources, and use reserved instances.",
+        "tags": ["Operations"],
+        "userGroups": ["Ops Team", "Finance"]
+    },
+    {
+        "id": "doc68",
+        "title": "R&D Blockchain Applications",
+        "content": "Blockchain research focuses on supply chain transparency and secure data sharing.",
+        "tags": ["R&D", "Engineering"],
+        "userGroups": ["Researchers", "Engineers"]
+    },
+    {
+        "id": "doc69",
+        "title": "Product Beta Testing Guide",
+        "content": "Recruit users across demographics, run A/B tests, and gather structured feedback.",
+        "tags": ["Product"],
+        "userGroups": ["Product Managers"]
+    },
+    {
+        "id": "doc70",
+        "title": "Design Trends 2025",
+        "content": "Emerging trends include minimalism, 3D graphics, and micro-interactions in UI design.",
+        "tags": ["Design"],
+        "userGroups": ["Designers"]
+    }
+]

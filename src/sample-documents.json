@@ -1,0 +1,62 @@
+[
+    {
+        "sourceId": "doc_001_company_overview",
+        "title": "Company Overview & Mission",
+        "tags": ["company", "overview", "management"],
+        "content": "ElectraNova Technologies Pvt. Ltd. is a mid-scale electronics manufacturing company specializing in consumer electronics and smart devices. Established in 2012, the company focuses on innovation, quality control, and sustainability. ElectraNova’s product portfolio includes smartphones, IoT sensors, power adapters, Bluetooth speakers, and custom electronic modules for industrial clients. The company’s mission is to “Simplify lives through smarter technology.” With headquarters in Pune, India, and two manufacturing units in Nashik and Aurangabad, ElectraNova employs over 1,200 staff across R&D, production, testing, and logistics departments."
+    },
+    {
+        "sourceId": "doc_002_product_design_rnd",
+        "title": "Product Design & R&D Process",
+        "tags": ["R&D", "engineering", "design"],
+        "content": "The R&D department at ElectraNova plays a crucial role in product innovation. The process begins with idea generation based on market analysis and customer feedback. Once a concept is approved, engineers create 3D CAD models and circuit designs using Altium Designer and SolidWorks. Prototypes are then developed using in-house 3D printers and PCB fabrication tools. Each prototype undergoes a series of tests—electrical, mechanical, and thermal—to validate performance and compliance with standards such as CE and BIS. The R&D team also collaborates closely with the firmware engineers to ensure seamless hardware-software integration."
+    },
+    {
+        "sourceId": "doc_003_manufacturing_workflow",
+        "title": "Manufacturing Workflow",
+        "tags": ["manufacturing", "production", "operations"],
+        "content": "The manufacturing process follows a semi-automated assembly line model. Raw materials and electronic components are sourced from verified vendors through the company’s supply chain portal. Each component batch undergoes quality inspection before entering the production floor. Surface Mount Technology (SMT) lines handle PCB assembly, followed by manual and automated soldering. The units then proceed to the testing stations for functionality verification. Finished products are cleaned, labeled, packaged, and moved to the warehouse for dispatch. The workflow is optimized using a Manufacturing Execution System (MES) that tracks each stage digitally."
+    },
+    {
+        "sourceId": "doc_004_quality_assurance",
+        "title": "Quality Assurance & Testing Standards",
+        "tags": ["QA", "testing", "quality"],
+        "content": "ElectraNova maintains ISO 9001:2015 certification for quality management. All products are tested for durability, safety, and performance before shipment. The QA department conducts functional tests, high-temperature endurance tests, and electromagnetic interference (EMI) assessments. Random samples are taken from every batch for destructive testing. If a unit fails, the entire batch is re-inspected. The company uses automated optical inspection (AOI) systems and in-circuit testers (ICT) to ensure high precision. Continuous feedback from the testing team is logged into the internal quality database for root cause analysis and improvement."
+    },
+    {
+        "sourceId": "doc_005_supply_chain_management",
+        "title": "Supply Chain & Vendor Management",
+        "tags": ["supply chain", "procurement", "vendors"],
+        "content": "The supply chain division manages procurement, inventory, and vendor relationships. ElectraNova sources microcontrollers, resistors, capacitors, and plastic enclosures from both domestic and international vendors. Each vendor must be pre-approved and comply with the company’s supplier code of conduct. A Vendor Management System (VMS) is used to rate suppliers based on delivery time, quality, and cost efficiency. Regular audits ensure ethical sourcing and compliance with environmental standards such as RoHS. Inventory levels are tracked using ERP integration to maintain just-in-time manufacturing practices."
+    },
+    {
+        "sourceId": "doc_006_sustainability_policy",
+        "title": "Environmental & Sustainability Initiatives",
+        "tags": ["environment", "sustainability", "green"],
+        "content": "Sustainability is a core part of ElectraNova’s strategy. The company minimizes electronic waste by recycling defective PCBs and reusing metal parts. The Nashik plant operates a solar rooftop system that contributes 30% of the unit’s energy needs. Packaging materials are biodegradable, and the company encourages customers to return end-of-life devices for proper disposal. ElectraNova aims to achieve carbon neutrality by 2030 through green procurement, energy-efficient manufacturing, and tree plantation drives near its facilities."
+    },
+    {
+        "sourceId": "doc_007_employee_training_safety",
+        "title": "Employee Training & Safety Protocols",
+        "tags": ["HR", "safety", "training"],
+        "content": "Every new employee undergoes an induction program that includes training in machine operation, safety, and quality standards. The company follows strict Occupational Health and Safety (OHS) policies, ensuring that workers use protective gear at all times. Fire drills are conducted quarterly, and all employees are trained in emergency evacuation procedures. The HR department also runs continuous skill development workshops to keep technicians updated on the latest manufacturing and testing technologies."
+    },
+    {
+        "sourceId": "doc_008_product_catalog",
+        "title": "Product Catalog & Technical Specifications",
+        "tags": ["products", "catalog", "specifications"],
+        "content": "ElectraNova’s main product lineup includes: SmartNova X2 Smartphone — 6.4-inch AMOLED display, 5G support, 5000mAh battery, and 108MP camera. AeroPods Bluetooth Earbuds — 25-hour battery life, touch controls, and IPX5 water resistance. EcoPlug Smart Adapter — IoT-enabled plug supporting Alexa and Google Home integration. ThermoSense Industrial Sensor — Real-time temperature and humidity monitoring with Modbus RTU interface. All products are covered under a 1-year standard warranty, with optional extended coverage plans for up to 3 years."
+    },
+    {
+        "sourceId": "doc_009_customer_support",
+        "title": "Customer Support & After-Sales Services",
+        "tags": ["support", "service", "customers"],
+        "content": "ElectraNova provides 24/7 customer support via phone, chat, and email. Customers can register their products online to access warranty services and firmware updates. Authorized service centers operate in 18 major Indian cities. The after-sales team maintains a ticket-based system to track customer complaints and resolutions. Data analytics is applied to identify recurring issues and improve product design. Replacement parts are shipped directly from the central warehouse to service centers upon ticket approval."
+    },
+    {
+        "sourceId": "doc_010_future_roadmap",
+        "title": "Future Roadmap & Innovation Goals",
+        "tags": ["strategy", "innovation", "future"],
+        "content": "By 2027, ElectraNova aims to expand its portfolio into electric mobility and wearable health devices. The company’s innovation roadmap includes developing AI-based power management systems, flexible PCBs, and integrated voice assistant modules. Strategic collaborations with research institutes and startups will support rapid prototyping and technology exchange. ElectraNova is also exploring automated quality inspection using machine vision and deep learning algorithms to further enhance manufacturing accuracy."
+    }
+]
