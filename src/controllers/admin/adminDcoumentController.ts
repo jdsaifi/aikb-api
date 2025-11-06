@@ -5,7 +5,7 @@ import { Request, Response } from 'express';
 import sampleDocuments from '../../sample-docs.json';
 import { DocumentModel } from '../../models/Document';
 import { TagMasterModel } from '../../models/TagMaster';
-import { ITagMaster } from '../../types';
+import { IConversationHistoryReference, ITagMaster } from '../../types';
 import PineconeHelper from '../../utils/pineconeHelper';
 import { RecursiveCharacterTextSplitter } from 'langchain/text_splitter';
 
@@ -347,6 +347,11 @@ export const adminSampleAISearch = asyncHandler(
         );
         const { user } = res.locals;
         const { conversationId, query } = req.body;
+        const userAttributes = user.tags || [];
+
+        // consoleLog.log('user: ', user);
+        // consoleLog.log('conversationId: ', conversationId);
+        // return consoleLog.log('query: ', query);
 
         if (!user) {
             throw new ApiError({
@@ -483,32 +488,50 @@ export const adminSampleAISearch = asyncHandler(
 
         const uniqueSearchedSourceIds = new Set(searchedSourceIds);
 
-        console.log('Searched Source IDs:', [...uniqueSearchedSourceIds]);
+        // console.log('Searched Source IDs:', [...uniqueSearchedSourceIds]);
 
         // const objectIds = [...uniqueSearchedSourceIds].map((id) =>
         //     toMongoId(id)
         // );
 
-        const documents = await SampleDocumentModel.find({
+        const documents = await DemoDocumentModel.find({
             _id: { $in: [...uniqueSearchedSourceIds] },
         });
 
-        // console.log('Documents:', documents.length);
+        consoleLog.log('Documents.length:', documents.length);
 
         // todo: fetch user attributes from the database
-        const userAttributes = ['region:US', 'tier:enterprise', 'role:sales'];
 
-        const accessibleDocs = documents.filter((doc) =>
+        // const userAttributes = ['region:US', 'tier:enterprise', 'role:sales'];
+
+        const accessibleDocs = documents.filter((doc: any) =>
             isPolicySatisfied(doc.policy, userAttributes)
         );
+        consoleLog.log('Accessible Docs.length:', accessibleDocs.length);
 
-        const accessibleDocsIds = accessibleDocs.map((doc) =>
+        const accessibleDocsFilePath = accessibleDocs.map((doc: any) => {
+            const tags = doc.policy.allow_any_of_string?.join('/');
+            return {
+                id: doc._id,
+                title: doc.heading,
+                preview: doc.content?.substring(0, 100) + '...',
+                url: `${tags}/${doc.heading}`,
+            };
+        });
+        // consoleLog.log('Accessible Docs File Path:', accessibleDocsFilePath);
+
+        const accessibleDocsIds = accessibleDocs.map((doc: any) =>
             doc._id.toString()
         );
         // console.log('Accessible Docs:', accessibleDocsIds);
+        // consoleLog.log('Accessible Docs IDs:', accessibleDocsIds);
 
         const searchedRecordsBasedOnPolicy = searchedRecords.result.hits.filter(
             (hit: any) => accessibleDocsIds.includes(hit.fields.sourceId)
+        );
+        consoleLog.log(
+            'Searched Records Based On Policy.length:',
+            searchedRecordsBasedOnPolicy.length
         );
 
         const kbDoc = searchedRecordsBasedOnPolicy
@@ -527,7 +550,12 @@ export const adminSampleAISearch = asyncHandler(
         conversationService.saveConversation(
             conversation?._id as string,
             user._id,
-            { role: 'assistant', content: aiResult }
+            {
+                role: 'assistant',
+                content: aiResult,
+                references:
+                    accessibleDocsFilePath as IConversationHistoryReference[],
+            }
         );
         return res.success(200, {
             // kbDoc,
@@ -536,6 +564,7 @@ export const adminSampleAISearch = asyncHandler(
             conversationId: conversation?._id,
             response: aiResult,
             searchedRecords: searchedRecordsBasedOnPolicy,
+            references: accessibleDocsFilePath,
         });
     }
 ); // END

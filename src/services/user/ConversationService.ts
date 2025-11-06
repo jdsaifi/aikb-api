@@ -1,5 +1,9 @@
 import { ConversationModel } from '../../models/Conversation';
-import { IConversationHistory, IUser } from '../../types';
+import {
+    IConversationHistory,
+    IConversationHistoryReference,
+    IUser,
+} from '../../types';
 import { toMongoId } from '../../utils/helpers';
 
 class ConversationService {
@@ -32,7 +36,11 @@ class ConversationService {
     private async pushConversationHistory(
         conversationId: string,
         userId: string,
-        history: { role: 'user' | 'assistant'; content: string }
+        history: {
+            role: 'user' | 'assistant';
+            content: string;
+            references?: IConversationHistoryReference[];
+        }
     ) {
         return await ConversationModel.findOneAndUpdate(
             {
@@ -47,7 +55,11 @@ class ConversationService {
     async saveConversation(
         conversationId: string,
         userId: string,
-        history: { role: 'user' | 'assistant'; content: string }
+        history: {
+            role: 'user' | 'assistant';
+            content: string;
+            references?: IConversationHistoryReference[];
+        }
     ) {
         if (!conversationId) {
             return this.createConversation(userId, [history]);

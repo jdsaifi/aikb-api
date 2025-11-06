@@ -3,6 +3,8 @@ import OpenAI from 'openai';
 import { ICall, IConversationHistory, IDocument } from '../types';
 import { config } from '../config';
 import { consoleLog } from '../utils/consoleLog';
+import { ApiError } from '../utils/responseHandler';
+import { StatusCodes } from 'http-status-codes';
 
 export class AIService {
     private readonly OPENROUTER_API_KEY: string;
@@ -276,14 +278,23 @@ export class AIService {
                 throw new Error(response?.error?.message || 'Unknown error');
             }
 
-            consoleLog.log(
-                'response.choices[0].message.content: ',
-                response.choices[0].message.content
-            );
+            consoleLog.log('\n\n');
+            consoleLog.log('AI response content: \n\n');
+            consoleLog.log(response.choices[0].message.content);
 
             const jsonResponse = JSON.parse(
                 response.choices[0].message.content
             );
+
+            // consoleLog.log('\n\n', 'jsonResponse\n', jsonResponse, '\n\n');
+
+            // if jsonResponse is not valid, throw an error
+            if (!jsonResponse || !jsonResponse['response']) {
+                throw new ApiError({
+                    httpCode: StatusCodes.BAD_REQUEST,
+                    description: 'Invalid AI response',
+                });
+            }
 
             return jsonResponse['response'];
         } catch (error) {

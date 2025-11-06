@@ -3,6 +3,7 @@ export const corsOptions = {
         'http://localhost:3060',
         'https://law.mindsharpner.com',
         'http://localhost:8080',
+        'http://localhost:8081',
         'https://aikb.mindsharpner.com',
     ],
     credentials: true,

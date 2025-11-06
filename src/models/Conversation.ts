@@ -1,10 +1,23 @@
 import { Schema, model } from 'mongoose';
 import { IConversation, IConversationHistory } from '../types';
+import { IConversationHistoryReference } from '../types';
+
+const conversationHistoryReferenceSchema =
+    new Schema<IConversationHistoryReference>({
+        id: { type: String, required: true },
+        title: { type: String, required: true },
+        preview: { type: String, required: true },
+        url: { type: String, required: true },
+    });
 
 const conversationHistorySchema = new Schema<IConversationHistory>(
     {
         role: { type: String, required: true },
         content: { type: String, required: true },
+        references: {
+            type: [conversationHistoryReferenceSchema],
+            default: null,
+        },
     },
     { timestamps: true }
 );

@@ -187,9 +187,17 @@ export interface IAddDocumentInput {
     isPublic: boolean;
 }
 
+export interface IConversationHistoryReference extends Document {
+    id: string;
+    title: string;
+    preview: string;
+    url: string;
+}
+
 export interface IConversationHistory extends Document {
     role: 'user' | 'assistant';
     content: string;
+    references: IConversationHistoryReference[] | null;
     createdAt: Date;
     updatedAt: Date;
 }
