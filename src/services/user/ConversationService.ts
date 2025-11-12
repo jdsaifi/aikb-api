@@ -1,4 +1,5 @@
 import { ConversationModel } from '../../models/Conversation';
+import { LLMModel } from '../../models/LLM';
 import {
     IConversationHistory,
     IConversationHistoryReference,

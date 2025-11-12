@@ -1,10 +1,12 @@
 import { AxiosError } from 'axios';
 import OpenAI from 'openai';
-import { ICall, IConversationHistory, IDocument } from '../types';
+import { ICall, IConversationHistory, IDocument, ILLMModel } from '../types';
 import { config } from '../config';
 import { consoleLog } from '../utils/consoleLog';
 import { ApiError } from '../utils/responseHandler';
 import { StatusCodes } from 'http-status-codes';
+import { zodTextFormat } from 'openai/helpers/zod';
+import { z } from 'zod';
 
 export class AIService {
     private readonly OPENROUTER_API_KEY: string;
@@ -253,9 +255,10 @@ export class AIService {
     async generateQueryResponse(
         query: string,
         kb: string,
-        history?: IConversationHistory[]
+        history?: IConversationHistory[],
+        model?: ILLMModel
     ): Promise<string> {
-        const prompt = this.buildQueryPrompt(query, kb, history);
+        const systemPrompt = this.buildQueryPrompt(query, kb, history);
 
         try {
             const openai = new OpenAI({
@@ -263,40 +266,77 @@ export class AIService {
                 apiKey: this.OPENROUTER_API_KEY,
             });
 
-            const response: any = await openai.chat.completions.create({
-                model: 'alibaba/tongyi-deepresearch-30b-a3b:free',
-                messages: [
-                    {
-                        role: 'user',
-                        content: prompt,
-                    },
-                ],
-                response_format: { type: 'json_object' },
+            const responseSchema = z.object({
+                response: z.string(),
             });
 
-            if ('error' in response) {
-                throw new Error(response?.error?.message || 'Unknown error');
+            const resFormat: any = await openai.responses.create({
+                model: model?.model || 'meta-llama/llama-3.3-8b-instruct:free',
+                input: [
+                    {
+                        role: 'system',
+                        content: systemPrompt,
+                    },
+                    {
+                        role: 'user',
+                        content: query,
+                    },
+                ],
+                text: {
+                    format: zodTextFormat(responseSchema, 'response'),
+                },
+            });
+
+            if (resFormat.error) {
+                throw new Error(resFormat.error?.message || 'Unknown error');
             }
 
-            consoleLog.log('\n\n');
-            consoleLog.log('AI response content: \n\n');
-            consoleLog.log(response.choices[0].message.content);
-
-            const jsonResponse = JSON.parse(
-                response.choices[0].message.content
+            consoleLog.log(
+                'resFormat: ',
+                resFormat.output[0]?.content[0]?.text
             );
+            return resFormat.output[0]?.content[0]?.text;
+
+            // const response: any = await openai.chat.completions.create({
+            //     model: model?.model || 'meta-llama/llama-3.3-8b-instruct:free',
+            //     messages: [
+            //         {
+            //             role: 'user',
+            //             content: prompt,
+            //         },
+            //     ],
+            //     // response_format: {
+            //     //     type: 'json_schema',
+            //     //     json_schema: {
+            //     //         name: 'response',
+            //     //         schema: { type: 'string' },
+            //     //     },
+            //     // },
+            // });
+
+            // if ('error' in response) {
+            //     throw new Error(response?.error?.message || 'Unknown error');
+            // }
+
+            // consoleLog.log('\n\n');
+            // consoleLog.log('AI response content: \n\n');
+            // consoleLog.log(response.choices[0].message.content);
+
+            // const jsonResponse = JSON.parse(
+            //     response.choices[0].message.content
+            // );
 
             // consoleLog.log('\n\n', 'jsonResponse\n', jsonResponse, '\n\n');
 
-            // if jsonResponse is not valid, throw an error
-            if (!jsonResponse || !jsonResponse['response']) {
-                throw new ApiError({
-                    httpCode: StatusCodes.BAD_REQUEST,
-                    description: 'Invalid AI response',
-                });
-            }
+            // // if jsonResponse is not valid, throw an error
+            // if (!jsonResponse || !jsonResponse['response']) {
+            //     throw new ApiError({
+            //         httpCode: StatusCodes.BAD_REQUEST,
+            //         description: 'Invalid AI response',
+            //     });
+            // }
 
-            return jsonResponse['response'];
+            // return jsonResponse['response'];
         } catch (error) {
             console.error('Error generating AI response:', error);
             throw new Error('Failed to generate AI response');
@@ -318,16 +358,15 @@ export class AIService {
         The knowledge base contains the following information:
         ${kb}
 
-        A user has asked the following question:
-        ${query}
-
         ${historyPrompt}
-
-        Format the response as a JSON object with the following structure:
-        {
-            "response": string
-        }
 
         Please provide a concise and relevant answer based on the knowledge base.`;
     }
+
+    // A user has asked the following question:
+    // ${query}
+    // Format the response as a JSON object with the following structure:
+    // {
+    //     "response": string
+    // }
 }

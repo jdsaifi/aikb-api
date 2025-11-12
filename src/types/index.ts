@@ -208,3 +208,20 @@ export interface IConversation extends Document {
     createdAt: Date;
     updatedAt: Date;
 }
+
+export interface ILLMModel {
+    provider:
+        | 'openai'
+        | 'anthropic'
+        | 'google'
+        | 'azure'
+        | 'meta'
+        | 'nvidia'
+        | 'other';
+    title: string;
+    model: string;
+    isActive: boolean;
+    sort: number;
+    createdAt: Date;
+    updatedAt: Date;
+}

@@ -94,3 +94,44 @@ export const userUpdateDocumentById = asyncHandler(
         res.success(StatusCodes.OK, result);
     }
 ); // end
+
+// get list of my documents
+
+export const listMyDocuments = asyncHandler(
+    async (req: Request, res: Response) => {
+        consoleLog.log('Received a request at /users/documents/my-documents');
+        const { user } = res.locals;
+        const result = await documentService.myDocuments(user);
+        res.success(StatusCodes.OK, result);
+    }
+); // end
+
+// get a my document by id
+export const getMyDocumentById = asyncHandler(
+    async (req: Request, res: Response) => {
+        consoleLog.log(
+            'Received a request at /users/documents/my-documents/:id'
+        );
+        const { id } = req.params;
+        const result = await documentService.get(id);
+        if (!result) {
+            return res.error(StatusCodes.NOT_FOUND, 'Document not found');
+        }
+        res.success(StatusCodes.OK, result);
+    }
+); // end
+
+// search my documents
+export const searchMyDocuments = asyncHandler(
+    async (req: Request, res: Response) => {
+        consoleLog.log(
+            'Received a request at /users/documents/my-documents/search'
+        );
+        const { user } = res.locals;
+        const { search, tags } = req.body;
+        consoleLog.log('query: ', search);
+        consoleLog.log('tags: ', tags);
+        const result = await documentService.searchMyDocuments(search, tags);
+        res.success(StatusCodes.OK, result);
+    }
+); // end

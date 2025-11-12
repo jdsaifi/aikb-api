@@ -4,7 +4,10 @@ import { authorizeUserRequest } from '../../middleware/userAuth';
 import {
     addDocument,
     getDocumentById,
+    getMyDocumentById,
     listAllDocuments,
+    listMyDocuments,
+    searchMyDocuments,
     userUpdateDocumentById,
 } from '../../controllers/user/documentController';
 import validateRequest from '../../middleware/validateRequest';
@@ -53,4 +56,24 @@ router.put(
     userUpdateDocumentById
 ); // END
 
+// list my documents
+router.get(
+    '/v1/users/documents/my-documents',
+    [authorizeUserRequest],
+    listMyDocuments
+); // END
+
+// list my documents
+router.get(
+    '/v1/users/documents/my-documents/:id',
+    [authorizeUserRequest],
+    getMyDocumentById
+); // END
+
+// search my documents
+router.post(
+    '/v1/users/documents/my-documents/search',
+    [authorizeUserRequest],
+    searchMyDocuments
+); // END
 export default router;

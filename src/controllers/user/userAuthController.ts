@@ -47,6 +47,21 @@ export const userLogout = asyncHandler(async (req: Request, res: Response) => {
 }); // END
 
 /**
+ * get user me
+ */
+export const userMe = asyncHandler(async (req: Request, res: Response) => {
+    consoleLog.log('Received a request at /users/me');
+    const { user } = res.locals;
+    if (!user) {
+        throw new ApiError({
+            httpCode: StatusCodes.NOT_FOUND,
+            description: 'User not found',
+        });
+    }
+    res.success(200, user);
+}); // END
+
+/**
  * get user profile
  */
 export const userProfile = asyncHandler(async (req: Request, res: Response) => {

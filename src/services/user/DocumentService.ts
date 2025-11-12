@@ -66,6 +66,52 @@ export class DocumentService {
         );
         return updatedDocument as unknown as IDemoDocument;
     } // end
+
+    /** get list of my documents */
+    async myDocuments(user: IUser): Promise<IDemoDocument[]> {
+        console.log('Getting list of my documents for user: ', user);
+        const documents = await DemoDocumentModel.find({
+            isChunked: true,
+            'policy.allow_any_of_string': { $in: user.tags || [] },
+        })
+            .select('-content') // exclude content from the response
+            .sort({ createdAt: -1 });
+        return documents as unknown as IDemoDocument[];
+    } // end
+
+    /** search my documents */
+    async searchMyDocuments(
+        query: string,
+        tags: string[]
+    ): Promise<IDemoDocument[]> {
+        let $or: any[] = [];
+        if (query) {
+            $or = [
+                { heading: { $regex: query, $options: 'i' } },
+                { subHeading: { $regex: query, $options: 'i' } },
+                { description: { $regex: query, $options: 'i' } },
+                { content: { $regex: query, $options: 'i' } },
+            ];
+        }
+
+        let tagsFilter: any = {};
+        if (tags) {
+            tagsFilter = {
+                'policy.allow_any_of_string': { $in: tags || [] },
+            };
+        }
+
+        const condition = {
+            isChunked: true,
+            $or,
+            ...tagsFilter,
+        };
+        console.log('cond: ', condition);
+        const documents = await DemoDocumentModel.find(condition)
+            .select('-content') // exclude content from the response
+            .sort({ createdAt: -1 });
+        return documents as unknown as IDemoDocument[];
+    } // end
 }
 
 export default DocumentService;

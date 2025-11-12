@@ -10,6 +10,7 @@ import UserRoutes from './user';
 import DocumentRoutes from './document';
 import KBRoutes from './kb';
 import TagMasterRoutes from './tagmaster';
+import LLMModelRoutes from './LLMModel';
 
 const router = Router();
 
@@ -24,6 +25,7 @@ router.use([
     DocumentRoutes,
     KBRoutes,
     TagMasterRoutes,
+    LLMModelRoutes,
 ]);
 
 export default router;

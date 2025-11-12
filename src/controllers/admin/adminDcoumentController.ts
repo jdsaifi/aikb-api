@@ -17,6 +17,7 @@ import { isPolicySatisfied, toMongoId } from '../../utils/helpers';
 import { AIService } from '../../services/AIService';
 import ConversationService from '../../services/user/ConversationService';
 import { DemoDocumentModel } from '../../models/DemoDocument';
+import { LLMModel } from '../../models/LLM';
 
 const textSplitter = new RecursiveCharacterTextSplitter({
     chunkSize: 150,
@@ -346,7 +347,7 @@ export const adminSampleAISearch = asyncHandler(
             'Received a request at /admins/samples/documents/ai-search'
         );
         const { user } = res.locals;
-        const { conversationId, query } = req.body;
+        const { conversationId, query, model } = req.body;
         const userAttributes = user.tags || [];
 
         // consoleLog.log('user: ', user);
@@ -357,6 +358,25 @@ export const adminSampleAISearch = asyncHandler(
             throw new ApiError({
                 httpCode: StatusCodes.BAD_REQUEST,
                 description: 'Invalid user ID',
+            });
+        }
+
+        if (!model) {
+            throw new ApiError({
+                httpCode: StatusCodes.BAD_REQUEST,
+                description: 'Model is required',
+            });
+        }
+
+        const llmModel = await LLMModel.findOne({
+            _id: toMongoId(model),
+            isActive: true,
+        });
+
+        if (!llmModel) {
+            throw new ApiError({
+                httpCode: StatusCodes.BAD_REQUEST,
+                description: 'Model not found',
             });
         }
 
@@ -540,11 +560,16 @@ export const adminSampleAISearch = asyncHandler(
             })
             .join('\n---\n');
 
+        /**
+         * send doc to LLM model to generate response
+         * save the response in the database
+         * */
         const aiService = new AIService();
         const aiResult = await aiService.generateQueryResponse(
             query,
             kbDoc,
-            []
+            [],
+            llmModel
         );
 
         conversationService.saveConversation(
