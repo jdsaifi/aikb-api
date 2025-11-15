@@ -8,6 +8,7 @@ import {
 } from '../../types';
 import { DemoDocumentModel } from '../../models/DemoDocument';
 import { toMongoId } from '../../utils/helpers';
+import { consoleLog } from '../../utils/consoleLog';
 
 export interface IUpdateDocumentInput {
     heading?: string;
@@ -69,11 +70,22 @@ export class DocumentService {
 
     /** get list of my documents */
     async myDocuments(user: IUser): Promise<IDemoDocument[]> {
-        console.log('Getting list of my documents for user: ', user);
-        const documents = await DemoDocumentModel.find({
-            isChunked: true,
-            'policy.allow_any_of_string': { $in: user.tags || [] },
-        })
+        console.log(
+            'Getting list of my documents for user and tags: ',
+            user.email,
+            user.tags
+        );
+
+        const condition = {
+            $and: [
+                { isChunked: true },
+                {
+                    'policy.allow_any_of_string': { $in: user.tags || [] },
+                },
+            ],
+        };
+        console.log('condition: ', condition);
+        const documents = await DemoDocumentModel.find(condition)
             .select('-content') // exclude content from the response
             .sort({ createdAt: -1 });
         return documents as unknown as IDemoDocument[];
@@ -82,7 +94,8 @@ export class DocumentService {
     /** search my documents */
     async searchMyDocuments(
         query: string,
-        tags: string[]
+        tags: string[],
+        userTags: string[]
     ): Promise<IDemoDocument[]> {
         let $or: any[] = [];
         if (query) {
@@ -94,19 +107,22 @@ export class DocumentService {
             ];
         }
 
-        let tagsFilter: any = {};
-        if (tags) {
-            tagsFilter = {
-                'policy.allow_any_of_string': { $in: tags || [] },
-            };
-        }
+        let tagsFilter: any = tags?.length ? tags : userTags;
 
-        const condition = {
-            isChunked: true,
-            $or,
-            ...tagsFilter,
+        const condition: any = {
+            $and: [
+                { isChunked: true },
+                {
+                    'policy.allow_any_of_string': {
+                        $in: tagsFilter,
+                    },
+                },
+                { $or: $or?.length ? $or : [] },
+            ],
         };
-        console.log('cond: ', condition);
+        consoleLog.log('condition: ');
+        consoleLog.deep(condition);
+
         const documents = await DemoDocumentModel.find(condition)
             .select('-content') // exclude content from the response
             .sort({ createdAt: -1 });

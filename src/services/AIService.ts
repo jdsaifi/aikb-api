@@ -271,7 +271,7 @@ export class AIService {
             });
 
             const resFormat: any = await openai.responses.create({
-                model: model?.model || 'meta-llama/llama-3.3-8b-instruct:free',
+                model: model?.model || 'openai/gpt-5-mini',
                 input: [
                     {
                         role: 'system',
@@ -291,11 +291,23 @@ export class AIService {
                 throw new Error(resFormat.error?.message || 'Unknown error');
             }
 
-            consoleLog.log(
-                'resFormat: ',
-                resFormat.output[0]?.content[0]?.text
+            const assistantResponse = resFormat.output.filter(
+                (output: any) => output.role === 'assistant'
             );
-            return resFormat.output[0]?.content[0]?.text;
+
+            if (!assistantResponse || assistantResponse.length === 0) {
+                throw new Error('No assistant response found');
+            }
+
+            console.log('\n\n\n\n\n');
+            consoleLog.log('AI assistantResponse: ');
+            consoleLog.log(assistantResponse[0].content);
+            console.log('\n\n\n\n\n');
+
+            const assistantResponseJson = JSON.parse(
+                assistantResponse[0].content[0].text || '{}'
+            );
+            return assistantResponseJson?.response || 'No response found';
 
             // const response: any = await openai.chat.completions.create({
             //     model: model?.model || 'meta-llama/llama-3.3-8b-instruct:free',

@@ -1,5 +1,5 @@
 import { config } from '../config';
-
+import util from 'util';
 type LogLevel = 'log' | 'info' | 'warn' | 'error';
 
 const ENABLE_LOGS = JSON.parse(config?.enable_logs.toString() || 'false');
@@ -15,10 +15,16 @@ const log = (...args: any[]) => customLog('log', ...args);
 const info = (...args: any[]) => customLog('info', ...args);
 const warn = (...args: any[]) => customLog('warn', ...args);
 const error = (...args: any[]) => customLog('error', ...args);
+const deep = (...args: any[]) =>
+    customLog(
+        'log',
+        util.inspect(args, { showHidden: false, depth: null, colors: true })
+    );
 
 export const consoleLog = {
     log,
     info,
     warn,
     error,
+    deep,
 };

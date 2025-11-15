@@ -131,7 +131,11 @@ export const searchMyDocuments = asyncHandler(
         const { search, tags } = req.body;
         consoleLog.log('query: ', search);
         consoleLog.log('tags: ', tags);
-        const result = await documentService.searchMyDocuments(search, tags);
+        const result = await documentService.searchMyDocuments(
+            search,
+            tags as string[],
+            (user.tags as string[]) || []
+        );
         res.success(StatusCodes.OK, result);
     }
 ); // end

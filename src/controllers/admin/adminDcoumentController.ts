@@ -502,6 +502,13 @@ export const adminSampleAISearch = asyncHandler(
         const pineconeHelper = new PineconeHelper();
         const searchedRecords = await pineconeHelper.searchDocuments(query);
 
+        consoleLog.log('\n\n\nSearched query: \n\n');
+        consoleLog.log(query);
+        consoleLog.log('\n\n\nSearched Records: \n\n');
+        consoleLog.log(searchedRecords.result.hits);
+
+        // return consoleLog.log('Search END');
+
         const searchedSourceIds = searchedRecords.result.hits.map(
             (hit: any) => hit.fields.sourceId
         );
@@ -518,8 +525,6 @@ export const adminSampleAISearch = asyncHandler(
             _id: { $in: [...uniqueSearchedSourceIds] },
         });
 
-        consoleLog.log('Documents.length:', documents.length);
-
         // todo: fetch user attributes from the database
 
         // const userAttributes = ['region:US', 'tier:enterprise', 'role:sales'];
@@ -527,7 +532,15 @@ export const adminSampleAISearch = asyncHandler(
         const accessibleDocs = documents.filter((doc: any) =>
             isPolicySatisfied(doc.policy, userAttributes)
         );
-        consoleLog.log('Accessible Docs.length:', accessibleDocs.length);
+
+        consoleLog.log('\n\naccessibleDocs found: \n\n', accessibleDocs);
+
+        if (accessibleDocs.length === 0) {
+            return res.success(200, {
+                message:
+                    'Documents not found for the given query. Please try again with different query.',
+            });
+        }
 
         const accessibleDocsFilePath = accessibleDocs.map((doc: any) => {
             const tags = doc.policy.allow_any_of_string?.join('/');
@@ -569,7 +582,7 @@ export const adminSampleAISearch = asyncHandler(
             query,
             kbDoc,
             [],
-            llmModel
+            llmModel as any
         );
 
         conversationService.saveConversation(
