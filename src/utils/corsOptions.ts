@@ -6,6 +6,7 @@ export const corsOptions = {
         'http://localhost:8081',
         'https://aikb.mindsharpner.com',
         'https://kb.neetiai.com',
+        'https://demo.neetiai.com',
     ],
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'], // Specify allowed methods
